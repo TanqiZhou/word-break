@@ -4,45 +4,43 @@ import com.github.tanqizhou.share.wb.dictionary.DefaultDictionaryOperate;
 import com.github.tanqizhou.share.wb.dictionary.WordDictionary;
 import com.github.tanqizhou.share.wb.dictionary.WordDictionaryFactory;
 import com.github.tanqizhou.share.wb.dictionary.WordDictionaryTools;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.*;
 
 /**
  * @auther: TanqiZhou
  * @Date: 2020/02/29/18:12
- * @Description: 分词测试类
+ * @Description: word segmentation test
  */
 public class WordSegmenterTest {
-    //字典
+    //Dictionary
     WordDictionary wordDictionary;
-    //字典操作类
+    //dictionary operation class
     DefaultDictionaryOperate defaultDictionaryOperate;
-    //分词器
+    //tokenizer
     WordSegmenter wordSegmenter;
 
     String input = "ilikesamsungmobile";
 
     String input2 = "ilikeicecreamandmango";
 
-    //默认字典
+    //default dictionary
     String from = "default";
     String defaulTwordString = "{ i, like, sam, sung, samsung, mobile, ice, cream, man go}";
 
-    //用户字典
+    //user dictionary
     String user = "user";
     String userWordString = "{ i, like, sam, sung, mobile, icecream, man go, mango}";
 
-    //第二个字典
+    //second dictionary
     String two = "two";
     String TwoWordString = "{ i, like, sam, sung, mobile, icecream, man go, mango}";
 
     /**
-     * Stage1 默认字典测
+     * Stage1 default dictionary test
      */
     @Test
     public void seg() {
@@ -50,18 +48,27 @@ public class WordSegmenterTest {
         defaultDictionaryOperate = new DefaultDictionaryOperate(wordDictionary);
         defaultDictionaryOperate.printWordDict(from);
         wordSegmenter = new WordSegmenter(wordDictionary);
-        for (StringBuilder stringBuilder : wordSegmenter.seg(input)) {
-            assertEquals(stringBuilder.toString(), "i like sam sung mobile");
-            System.out.println(stringBuilder.toString());
-        }
-        for (StringBuilder stringBuilder : wordSegmenter.seg(input2)) {
-            assertEquals(stringBuilder.toString(), "i like ice cream and man go");
-            System.out.println(stringBuilder.toString());
-        }
+
+        List<StringBuilder> outStringBuilderList = wordSegmenter.seg(input);
+        String out = outStringBuilderList.get(0).toString();
+        int outSize = outStringBuilderList.size();
+        System.out.println(out);
+
+        assertEquals(out, "i like sam sung mobile");
+        assertEquals(outSize, 1);
+
+        List<StringBuilder> outStringBuilderList2 = wordSegmenter.seg(input2);
+        String out2 = outStringBuilderList2.get(0).toString();
+        int outSize2 = outStringBuilderList2.size();
+        System.out.println(out2);
+
+        assertEquals(out2, "i like ice cream and man go");
+        assertEquals(outSize2, 1);
+
     }
 
     /**
-     * Stage2  用户字典测试
+     * Stage2  user dictionary test
      */
     @Test
     public void segByUser() {
@@ -69,19 +76,21 @@ public class WordSegmenterTest {
         defaultDictionaryOperate = new DefaultDictionaryOperate(wordDictionary);
         defaultDictionaryOperate.printWordDict(from);
         wordSegmenter = new WordSegmenter(wordDictionary);
-        for (StringBuilder stringBuilder : wordSegmenter.segByUser(input)) {
-            assertEquals(stringBuilder.toString(), "i like sam sung mobile");
-            System.out.println(stringBuilder.toString());
-        }
-        for (StringBuilder stringBuilder : wordSegmenter.segByUser(input2)) {
-            System.out.println(stringBuilder.toString());
-        }
+
+        List<StringBuilder> outStringBuilderList = wordSegmenter.segByUser(input);
+        String out = outStringBuilderList.get(0).toString();
+        int outSize = outStringBuilderList.size();
+        System.out.println(out);
+
+        assertEquals(out, "i like sam sung mobile");
+        assertEquals(outSize, 1);
+
         assertEquals(wordSegmenter.segByUser(input2).get(0).toString(), "i like icecream and man go");
         assertEquals(wordSegmenter.segByUser(input2).get(1).toString(), "i like icecream and mango");
     }
 
     /**
-     * Stage3 合并字典测试
+     * Stage3 merge dictionary test
      */
     @Test
     public void segByAll() {

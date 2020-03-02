@@ -1,22 +1,18 @@
 package com.github.tanqizhou.share.wb.dictionary;
 
-import com.google.common.base.Splitter;
-import com.google.common.collect.SetMultimap;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 /**
  * @auther: TanqiZhou
  * @Date: 2020/02/29/15:12
- * @Description: 字典库工厂测试
+ * @Description: dictionary library factory test
  */
 public class WordDictionaryFactoryTest {
 
     /**
-     * 构建工厂测试
+     * build factory test
      */
     @Test
     public void getWordDictionaryByStringTest(){

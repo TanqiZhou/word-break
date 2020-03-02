@@ -1,6 +1,5 @@
 package com.github.tanqizhou.share.wb.dictionary;
 
-import com.github.tanqizhou.share.wb.ConstDictionary;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.SetMultimap;
@@ -10,15 +9,15 @@ import java.util.List;
 /**
  * @Auther: TanqiZhou
  * @Date: 2020/02/29/18:11
- * @Description: 字典工具类
+ * @Description: dictionary tools
  */
 public class WordDictionaryTools {
 
     /**
-     * 添加合并字典
-     * @param wordDictionary 字典
-     * @param from 新字典位置
-     * @param wordString 字典字符串
+     * add merge dictionary
+     * @param wordDictionary Dictionary
+     * @param from new dictionary location
+     * @param wordString dictionary string
      */
     @SuppressWarnings({"unchecked","rawtypes"})
     public static void addWordDictionary(WordDictionary wordDictionary,String from, String wordString){

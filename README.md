@@ -1,22 +1,22 @@
 ### Java WordBreak
 
-#### 1、快速体验
+#### 1、quick experience
 	
         String from = "default";
         String defaulTwordString = "{ i, like, sam, sung, samsung, mobile, ice, cream, man go}";
-	    构建字典
+	    build dictionary
         wordDictionary = WordDictionaryFactory.getWordDictionaryByString(from, defaulTwordString);
         
-#### 2、对文本进行分词
+#### 2、word segmentation
 
 	defaultDictionaryOperate = new DefaultDictionaryOperate(wordDictionary);
     defaultDictionaryOperate.printWordDict(from);
     wordSegmenter = new WordSegmenter(wordDictionary);
-    默认字典
+    default dictionary
     List<StringBuilder> StageInput = wordSegmenter.seg(input);
-    用户字典
+    user dictionary
     List<StringBuilder> StageInput1 = wordSegmenter.segByUser(input1);
-    合并字典
+    merge dictionary
     List<StringBuilder> StageInput2 = wordSegmenter.segByAll(input2);
     
     System.out.println(StageInput);

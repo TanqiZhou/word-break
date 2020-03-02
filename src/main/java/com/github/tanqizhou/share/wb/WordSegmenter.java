@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * @Auther: TanqiZhou
  * @Date: 2020/02/29/15:46
- * @Description: 分词器
+ * @Description: tokenizer
  */
 @Slf4j
 public class WordSegmenter {
@@ -22,30 +22,30 @@ public class WordSegmenter {
     }
 
     /**
-     * 默认分词
+     * default segmentation
      *
-     * @param wordString 要分的句子
-     * @return 所有字典结果
+     * @param wordString sentence to divide
+     * @return all dictionary results
      */
     public List<StringBuilder> seg(String wordString) {
         return getDictionarybyConst(ConstDictionary.DefaultDictionary, wordString);
     }
 
     /**
-     * 用户字典分词
+     * user dictionary word segmentation
      *
-     * @param wordString 要分的句子
-     * @return 所有字典结果
+     * @param wordString sentence to divide
+     * @return all dictionary results
      */
     public List<StringBuilder> segByUser(String wordString) {
         return getDictionarybyConst(ConstDictionary.UserDictionary, wordString);
     }
 
     /**
-     * 合并字典分词
+     * merge dictionary word segmentation
      *
-     * @param wordString 要分的句子
-     * @return 所有字典结果
+     * @param wordString sentence to divide
+     * @return all dictionary results
      */
     public List<StringBuilder> segByAll(String wordString) {
         return getDictionarybyConst(ConstDictionary.AllDictionary, wordString);
@@ -56,10 +56,10 @@ public class WordSegmenter {
     }
 
     /**
-     * @param constDictionary 分类字典范围
-     * @param wordString      要分的词
-     * @param preSegmenta     是否预分词
-     * @return 所有字典结果
+     * @param constDictionary category dictionary range
+     * @param wordString      words to divide
+     * @param preSegmenta     whether to pre segment
+     * @return all dictionary results
      */
     private List<StringBuilder> getDictionarybyConst(ConstDictionary constDictionary, String wordString, boolean preSegmenta) {
         List<StringBuilder> allWordResultList = new ArrayList<>();
@@ -69,34 +69,34 @@ public class WordSegmenter {
         while (startSub < wordString.length()) {
             String word;
             try {
-                //截取字符
+                //intercept characters
                 word = wordString.substring(startSub, startSub + wordLenght);
                 log.trace(word);
             } catch (StringIndexOutOfBoundsException e) {
                 if (preSegmenta) {
-                    log.trace("预分词失败");
+                    log.trace("pre segmentation failed");
                     return null;
                 } else {
                     log.trace(allWordResultList.toString());
-                    throw new RuntimeException("分词失败");
+                    throw new RuntimeException("word segmentation failure");
                 }
             }
             for (int j = 0; j < constDictionary.getFrom().size(); j++) {
                 commonSag = commmonSeg(constDictionary.getFrom().get(j), word);
                 if (commonSag != null) {
-                    //发现单词
+                    //find word
                     if (!preSegmenta) {
-                        //需要预分词
+                        //need pre segmentation
                         int preStartSub = startSub + wordLenght;
                         String preWordString = wordString.substring(preStartSub);
                         List<StringBuilder> dictionarybyConst = getDictionarybyConst(constDictionary, preWordString, true);
                         if (dictionarybyConst == null) {
-                            //预分词失败
+                            //pre segmentation failed
                             wordLenght++;
                             continue;
                         }
                     } else {
-                        //预分词成功
+                        //pre segmentation success
                         log.debug(commonSag.toString());
                         return commonSag;
                     }
@@ -110,7 +110,7 @@ public class WordSegmenter {
                     break;
                 }
             }
-            //没有发现单词
+            //no words found
             if (commonSag == null) {
                 wordLenght++;
             }
@@ -119,11 +119,11 @@ public class WordSegmenter {
     }
 
     /**
-     * 从字典查找分词
+     * find word segmentation from a dictionary
      *
-     * @param from 字典
-     * @param word 单词
-     * @return 所有字典
+     * @param from character dictionary
+     * @param word individual word
+     * @return all dictionaries
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     private List<StringBuilder> commmonSeg(String from, String word) {
@@ -146,11 +146,11 @@ public class WordSegmenter {
     }
 
     /**
-     * 合并字典结果
+     * merge dictionary results
      *
-     * @param wordResultList 本次结果
-     * @param commmonSeg     新单词
-     * @return 合并后的字典结果
+     * @param wordResultList this result
+     * @param commmonSeg     new words
+     * @return merged dictionary results
      */
     public List<StringBuilder> getAllwordResultList(List<StringBuilder> wordResultList, List<StringBuilder> commmonSeg) {
         ArrayList<StringBuilder> allWordResultList = new ArrayList<>();

@@ -1,26 +1,24 @@
 package com.github.tanqizhou.share.wb.dictionary;
 
-import java.util.Set;
-
 /**
  * @Auther: TanqiZhou
  * @Date: 2020/02/29/16:25
- * @Description: 词典操作接口
+ * @Description: dictionary operation interface
  */
 public interface DictionaryOperate {
 
-    //给词典添加单词
+    //add words to dictionary
     public boolean addWord(String from,String word);
 
-    //给词典添加单词
+    //determine if the dictionary contains words
     public boolean contains(String from,String word);
 
-    //移除词典的单词
+    //remove dictionary words
     boolean removeWord(String from,String word);
 
-    //打印词典里的词典
+    //print dictionary from dictionary
     void printWordDict(String from);
 
-    // 获得操作的词典
+    // get operation dictionary
     WordDictionary getWordDict();
 }

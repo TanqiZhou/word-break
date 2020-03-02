@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * @Auther: TanqiZhou
  * @Date: 2020/02/29/15:46
- * @Description: 字典位置
+ * @Description: dictionary location
  */
 public enum ConstDictionary {
-    //默认字典
+    //default dictionary
     DefaultDictionary("default"),
-    //用户字典
+    //user dictionary
     UserDictionary("user"),
-    //合并个字典
+    //merge a dictionary
     AllDictionary("two","default");
 
     private List<String> from;

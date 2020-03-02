@@ -1,25 +1,18 @@
 package com.github.tanqizhou.share.wb.dictionary;
 
-import com.alibaba.fastjson.JSON;
-import com.google.common.base.Splitter;
-import com.google.common.collect.SetMultimap;
-
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @auther: TanqiZhou
  * @Date: 2020/02/29/15:12
- * @Description: 字典库工厂
+ * @Description: dictionary library factory
  */
 public class WordDictionaryFactory {
 
 
     /**
-     * 生产字典
-     * @param from 字典位置
-     * @param wordString 字典字符串
-     * @return 字典
+     * production dictionary
+     * @param from dictionary location
+     * @param wordString dictionary string
+     * @return Dictionary
      */
     public static WordDictionary getWordDictionaryByString(String from, String wordString){
         if (from != null && wordString != null) {

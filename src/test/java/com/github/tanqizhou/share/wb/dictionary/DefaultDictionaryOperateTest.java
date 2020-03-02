@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * @auther: TanqiZhou
  * @Date: 2020/02/29/15:12
- * @Description: 字典库操作测试
+ * @Description: dictionary library operation test
  */
 public class DefaultDictionaryOperateTest {
 
