@@ -14,10 +14,9 @@
         <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
         <fastjson.version>1.2.62</fastjson.version>
         <guava.version>28.1-jre</guava.version>
-        <lombok.version>1.16.22</lombok.version>
-        <slf4j-api.version>1.6.4</slf4j-api.version>
-        <junit.version>4.11</junit.version>
-        <logback-classic.version>0.9.28</logback-classic.version>
+        <lombok.version>1.18.10</lombok.version>
+        <junit.version>4.12</junit.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
 
     <dependencies>
@@ -33,11 +32,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
@@ -46,13 +40,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
