@@ -11,7 +11,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <fastjson.version>1.2.62</fastjson.version>
         <guava.version>28.1-jre</guava.version>
         <lombok.version>1.18.10</lombok.version>
@@ -49,4 +49,10 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/TanqiZhou/car-drive</url>
+        </repository>
+    </distributionManagement>
 </project>
